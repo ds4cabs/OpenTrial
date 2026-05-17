@@ -1,5 +1,6 @@
 # OpenTrial
 
+[![CABS: ds4cabs](https://img.shields.io/badge/CABS-ds4cabs-1f4b99?logo=github)](https://github.com/ds4cabs)
 [![GitHub Pages: live](https://img.shields.io/badge/GitHub_Pages-live-brightgreen?logo=github)](https://ds4cabs.github.io/OpenTrial/)
 ![CABS: 2026](https://img.shields.io/badge/CABS-2026-6f42c1)
 ![status: MVP in progress](https://img.shields.io/badge/status-MVP_in_progress-f1c40f)
