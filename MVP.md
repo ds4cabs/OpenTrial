@@ -38,7 +38,9 @@ Plus computation utilities: `build_prior(effects_df)` and `simulate_gs_design(n,
 ## Week-by-Week
 
 **Week 1 (~18h):** Build 7 tool functions + computation utilities. Pull 30 US + 20 international trials.
+
 **Week 2 (~22h):** Clone computation-engine sub-template. Build form (with audit-mode toggle). Wire up Gemini.
+
 **Week 3 (~12h):** Test 5 design queries; tune for rigorous citation-heavy reports; PDF export; demo.
 
 ## What's OUT
