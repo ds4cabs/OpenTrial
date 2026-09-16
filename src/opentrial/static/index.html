@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="An evidence-informed workspace for exploring clinical trial designs.">
+  <title>OpenTrial | Trial design</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script src="/appearance.js"></script>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/chart.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to workspace</a>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v4h16v-4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 3v17h17M7 16l4-6 4 2 5-7"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v5h5M8 12h8m-8 4h6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 13 4-4m-5 6-2 2a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 2 2-2a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0"/></symbol>
+  </svg>
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a href="#design" class="brand" aria-label="OpenTrial home">
+        <svg viewBox="0 0 36 36" aria-hidden="true"><path d="M5 27V9m0 18h27M8 23c4 0 5-15 11-15s7 15 12 15"/><path d="M19 5v26" stroke-dasharray="2 4" opacity=".45"/></svg>
+        <strong>OpenTrial</strong><span>Design workspace</span>
+      </a>
+      <nav class="main-nav" aria-label="Workspace">
+        <a href="#design" data-route="design" aria-current="page">Design</a>
+        <a href="#results" data-route="results">Results<span id="results-dot" class="nav-dot" hidden></span></a>
+        <a href="#integrations" data-route="integrations">Integrations</a>
+      </nav>
+      <div class="header-actions">
+        <details class="appearance">
+          <summary aria-label="Appearance" title="Appearance"><svg class="icon"><use href="#i-sun"/></svg></summary>
+          <div class="appearance-menu"><span id="appearance-label">Appearance</span><div role="group" aria-labelledby="appearance-label">
+            <button type="button" data-appearance="system" aria-pressed="true">System</button>
+            <button type="button" data-appearance="light" aria-pressed="false">Light</button>
+            <button type="button" data-appearance="dark" aria-pressed="false">Dark</button>
+          </div></div>
+        </details>
+        <button class="button secondary compact" id="new-design" type="button"><svg class="icon"><use href="#i-plus"/></svg>New design</button>
+      </div>
+    </div>
+  </header>
+  <div class="breadcrumb wrap"><span>Workspace</span><span class="slash">/</span><span id="breadcrumb-current">Trial design</span><span class="badge">Research preview</span></div>
+  <main id="main" class="wrap" tabindex="-1">
+    <noscript><div class="notice">Enable JavaScript to use the OpenTrial workspace.</div></noscript>
+    <section id="design-view" data-view="design" aria-labelledby="design-heading">
+      <form id="design-form" class="workspace-grid">
+        <div class="main-column">
+          <div class="page-heading"><h1 id="design-heading">Evidence-led trial design.</h1><p class="lede">Bring evidence into your next study.<br>Explore power, assurance, and the sample size behind it.</p></div>
+          <div class="intro-panel">
+            <div class="intro-copy"><div class="eyebrow">From evidence to a decision</div><h2>A clearer picture.<br>A more informed design.</h2><p>Define your study. Build an evidence-based prior. See how your assumptions shape the result.</p><div class="intro-tags"><span>Two-arm studies</span><span>Bayesian assurance</span></div></div>
+            <svg class="prior-art" viewBox="0 0 285 225" aria-hidden="true">
+              <defs><linearGradient id="prior-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="currentColor" stop-opacity=".13"/><stop offset="1" stop-color="currentColor" stop-opacity=".01"/></linearGradient></defs>
+              <path d="M20 177h249M55 196V42m51 140v5m52-5v5m52-5v5m51-5v5" fill="none" stroke="currentColor" opacity=".22"/>
+              <path d="M20 177c41 0 52-67 94-67s58 67 96 67" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 5" opacity=".35"/>
+              <path d="M51 177c54 0 52-125 105-125s50 125 108 125Z" fill="url(#prior-fill)"/>
+              <path d="M51 177c54 0 52-125 105-125s50 125 108 125" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M156 43v138" stroke="currentColor" stroke-dasharray="3 5" opacity=".45"/><circle cx="156" cy="52" r="4" fill="var(--surface)" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="68" cy="64" r="3" fill="currentColor" opacity=".22"/><circle cx="221" cy="31" r="3" fill="currentColor" opacity=".22"/><path d="m61 55 14 19m138-51 15 17" stroke="currentColor" opacity=".12"/>
+            </svg>
+          </div>
+          <div class="panel-caption"><span>Illustrative demo included. No API keys needed to start.</span><button type="button" id="load-demo" class="text-button">Load demo <span aria-hidden="true">↗</span></button></div>
+
+          <fieldset class="form-section"><legend><span class="section-number">01</span>Study question</legend>
+            <p class="section-description">What do you want to learn from your trial?</p>
+            <div class="form-grid">
+              <div class="field"><label for="indication">Indication</label><input id="indication" name="indication" required maxlength="300" value="Type 2 Diabetes" autocomplete="off"></div>
+              <div class="field"><label for="drug_or_class">Drug or class</label><input id="drug_or_class" name="drug_or_class" maxlength="300" value="metformin" autocomplete="off"></div>
+              <div class="field full-width"><label for="endpoint">Primary endpoint</label><input id="endpoint" name="endpoint" required maxlength="300" value="HbA1c change from baseline" autocomplete="off"></div>
+              <div class="field full-width"><label for="endpoint_type">Endpoint type</label><select id="endpoint_type" name="endpoint_type"><option value="continuous">Continuous · difference in means</option><option value="binary">Binary · difference in event rates</option></select><p class="field-hint">Choose the type of outcome you plan to measure.</p></div>
+            </div>
+          </fieldset>
+          <fieldset class="form-section"><legend><span class="section-number">02</span>Design assumptions</legend>
+            <p class="section-description">Set the effect, uncertainty, and operating targets for your study.</p>
+            <div class="form-grid">
+              <div class="field"><label for="target_effect" id="effect-label">Target treatment effect</label><input id="target_effect" name="target_effect" type="number" min="0.05" max="2" step="0.01" value="0.50" required aria-describedby="effect-hint"><p class="field-hint" id="effect-hint">Difference to detect, in the endpoint’s own units.</p></div>
+              <div class="field" id="sd-field"><label for="endpoint_sd">Endpoint standard deviation</label><input id="endpoint_sd" name="endpoint_sd" type="number" min="0.1" max="20" step="0.01" value="1.0" required aria-describedby="sd-hint"><p class="field-hint" id="sd-hint">Population SD, in the same units as the effect.</p></div>
+              <div class="field" id="baseline-field" hidden><label for="baseline_proportion">Control event rate</label><div class="input-unit"><input id="baseline_proportion" name="baseline_proportion" type="number" min="1" max="99" step="1" value="30" required disabled><span>%</span></div><p class="field-hint" id="binary-rate">Implied treatment rate: 45%.</p></div>
+              <div class="field"><label for="alpha">One-sided alpha</label><input id="alpha" name="alpha" type="number" min="0.001" max="0.20" step="0.001" value="0.025" required><p class="field-hint">Pre-specified Type I error rate.</p></div>
+              <div class="field"><label for="desired_power">Desired power</label><div class="input-unit"><input id="desired_power" name="desired_power" type="number" min="50" max="99" step="1" value="80" required><span>%</span></div><p class="field-hint">Probability of detecting the target effect.</p></div>
+              <div class="field"><label for="max_n_per_arm">Maximum participants per arm</label><input id="max_n_per_arm" name="max_n_per_arm" type="number" min="40" max="1000" step="1" value="300" required></div>
+              <div class="field"><label for="dropout_rate">Planned dropout</label><div class="input-unit"><input id="dropout_rate" name="dropout_rate" type="number" min="0" max="90" step="1" value="0" required><span>%</span></div></div>
+            </div>
+          </fieldset>
+          <fieldset class="form-section"><legend><span class="section-number">03</span>Evidence sources</legend>
+            <p class="section-description">Choose the evidence that will inform your prior and provide context.</p>
+            <div id="core-sources" class="sources-list"><p class="muted">Loading evidence sources…</p></div>
+            <details class="sub-details"><summary>Additional evidence sources</summary><div id="extra-sources" class="sources-list"></div></details>
+            <p class="field-hint" id="source-note">The seeded demo uses illustrative T2D / HbA1c effect estimates.</p>
+          </fieldset>
+          <details class="advanced form-section" id="advanced-settings"><summary>Advanced analysis<span class="muted">Optional</span></summary>
+            <div class="advanced-content">
+              <div class="form-grid">
+                <div class="field"><label for="tau_method">Heterogeneity estimator</label><select id="tau_method" name="tau_method"><option value="dl">DerSimonian–Laird</option><option value="reml">REML</option></select><p class="field-hint">Estimates the variance between studies.</p></div>
+                <div class="field"><label for="decision_threshold">Bayesian decision threshold</label><input id="decision_threshold" name="decision_threshold" type="number" min="0.501" max="0.999" step="0.001" value="0.975" required><p class="field-hint">Required posterior Pr(effect &gt; 0).</p></div>
+              </div>
+              <label class="check-row"><input type="checkbox" name="use_mc_operating_characteristics" id="use_mc_operating_characteristics"><span><strong>Monte Carlo operating characteristics</strong><small>Estimate power, assurance, and empirical Type I error by simulation. Takes longer.</small></span></label>
+              <label class="check-row"><input type="checkbox" name="use_prior_sensitivity" id="use_prior_sensitivity"><span><strong>Prior sensitivity analysis</strong><small>Compare the result across evidence, skeptical, reference, and enthusiastic priors.</small></span></label>
+              <label class="check-row"><input type="checkbox" name="use_bayesian_prior" id="use_bayesian_prior"><span><strong>Bayesian meta-analysis prior</strong><small>Use PyMC when available, with automatic fallback to the analytic prior.</small></span></label>
+              <label class="check-row"><input type="checkbox" name="use_gemini_narrative" id="use_gemini_narrative" disabled><span><strong>Gemini narrative</strong><small id="gemini-hint">Available when a Gemini key is configured.</small></span></label>
+              <label class="check-row"><input type="checkbox" name="use_group_sequential" id="use_group_sequential"><span><strong>Group-sequential design</strong><small>Add planned interim analyses with calibrated efficacy boundaries.</small></span></label>
+              <div class="form-grid inset-options" id="sequential-options" hidden>
+                <div class="field"><label for="gs_boundary">Interim boundary</label><select id="gs_boundary" name="gs_boundary" disabled><option value="obrien-fleming">O’Brien–Fleming</option><option value="pocock">Pocock</option></select></div>
+                <div class="field"><label for="gs_n_looks">Number of looks</label><input id="gs_n_looks" name="gs_n_looks" type="number" min="2" max="6" step="1" value="4" required disabled></div>
+              </div>
+              <h3 class="small-heading">Audit an existing study</h3><p class="field-hint">Benchmark a trial without adding it to your prior.</p>
+              <div class="form-grid audit-fields"><div class="field"><label for="audit_nct_id">ClinicalTrials.gov ID</label><input id="audit_nct_id" name="audit_nct_id" placeholder="NCT12345678" pattern="NCT[0-9]{8}" maxlength="11"></div><div class="field"><label for="audit_pmid">PubMed ID</label><input id="audit_pmid" name="audit_pmid" placeholder="12345678" pattern="[0-9]{1,12}" maxlength="12" inputmode="numeric"></div></div>
+            </div>
+          </details>
+        </div>
+        <aside class="design-sidebar" aria-label="Design summary">
+          <button type="submit" id="generate" class="button primary generate" disabled><span>Generate design report</span><svg class="icon"><use href="#i-arrow"/></svg></button>
+          <p id="run-status" class="run-status" role="status" aria-live="polite">Connecting to your engine…</p>
+          <div id="form-error" class="notice error" role="alert" tabindex="-1" hidden></div>
+          <button type="button" class="button secondary retry" id="retry-connect" hidden>Reconnect</button>
+          <a href="#results" id="latest-report" class="latest-report" hidden>View latest report <span aria-hidden="true">↗</span></a>
+          <h2>Design overview</h2>
+          <dl class="overview-list">
+            <div><dt>Indication</dt><dd id="summary-indication">Type 2 Diabetes</dd></div>
+            <div><dt>Endpoint</dt><dd id="summary-endpoint">HbA1c change from baseline</dd></div>
+            <div><dt>Study design</dt><dd id="summary-type">Two-arm · Continuous</dd></div>
+            <div class="overview-pair"><div><dt>Target power</dt><dd id="summary-power">80%</dd></div><div><dt>One-sided α</dt><dd id="summary-alpha">0.025</dd></div></div>
+            <div><dt>Enrollment limit</dt><dd><span id="summary-n">300</span> participants per arm</dd></div>
+            <div><dt>Evidence</dt><dd id="summary-sources">Seeded demo · Offline</dd></div>
+          </dl>
+          <div class="sidebar-note"><svg class="icon"><use href="#i-doc"/></svg><div><strong>Every result has a source.</strong><p>Review the evidence, assumptions, and operating characteristics behind your design.</p></div></div>
+          <div class="sidebar-boundary"><span class="status-dot"></span>Exploratory research tool<p>For learning and design exploration. Real studies need independent statistical review.</p></div>
+        </aside>
+      </form>
+    </section>
+
+    <section id="results-view" data-view="results" aria-labelledby="results-heading" hidden>
+      <div class="results-heading"><div class="page-heading"><h1 id="results-heading">Your design, in perspective.</h1><p class="lede" id="results-lede">The evidence, assumptions, and numbers behind your next study.</p></div><a class="button secondary" href="#design">Edit design<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      <div id="results-empty" class="empty-state"><span class="empty-icon"><svg class="icon"><use href="#i-chart"/></svg></span><h2>A clear view of what comes next.</h2><p>Generate a design report to explore your sample size,<br>power, Bayesian assurance, and supporting evidence.</p><a class="button primary" href="#design">Set up your study<svg class="icon"><use href="#i-arrow"/></svg></a></div>
+      <div id="report-content" hidden>
+        <div class="notice" id="stale-notice" hidden>Your inputs have changed since this report was generated. <a href="#design">Generate a new report</a> to update these results.</div>
+        <div id="report-warnings"></div>
+        <div id="result-metrics" class="metrics-grid"></div>
+        <div class="results-layout">
+          <div class="main-column"><section class="report-section"><div class="section-heading"><div><h2>Operating characteristics</h2><p>How power and assurance change with enrollment.</p></div><span class="badge" id="calculation-label">Analytic</span></div><div id="power-chart" class="chart-container"></div><details class="data-details"><summary>View the underlying data</summary><div class="table-scroll" id="operating-table" tabindex="0" role="region" aria-label="Operating characteristics data"></div></details></section>
+          <section class="report-section" id="decision-section"><h2>Bayesian decision criterion</h2><p id="decision-description" class="section-description"></p><div id="decision-metrics" class="decision-grid"></div></section>
+          <section class="report-section" id="sensitivity-section" hidden><h2>Prior sensitivity</h2><p class="section-description">See how much your result depends on the prior.</p><div class="table-scroll" id="sensitivity-table" tabindex="0" role="region" aria-label="Prior sensitivity data"></div></section>
+          <section class="report-section" id="sequential-section" hidden><h2>Group-sequential design</h2><p class="section-description" id="sequential-summary"></p><div class="table-scroll" id="sequential-table" tabindex="0" role="region" aria-label="Interim analysis data"></div></section>
+          <section class="report-section"><div class="section-heading"><div><h2>Evidence provenance</h2><p>Every record, with its original source.</p></div><span class="badge" id="evidence-count">0 records</span></div><div id="source-outcomes" class="outcomes"></div><div id="evidence-records" class="evidence-records"></div></section>
+          <section class="report-section" id="audit-section" hidden><h2>Audit targets</h2><p class="section-description">Reference studies, excluded from the prior.</p><div id="audit-records"></div></section>
+          <section class="report-section"><details class="full-report"><summary>Read the complete report<span class="muted">Methods, assumptions &amp; notes</span></summary><div id="report-document" class="report-document"></div></details></section>
+          </div>
+          <aside class="report-sidebar"><h2>Keep the full picture.</h2><p>Download your report with its inputs, evidence, and results.</p><div class="download-buttons"><button class="button primary" data-download="pdf" type="button"><svg class="icon"><use href="#i-download"/></svg>Download PDF</button><button class="button secondary" data-download="markdown" type="button"><svg class="icon"><use href="#i-doc"/></svg>Markdown report</button><button class="button secondary" data-download="json" type="button"><svg class="icon"><use href="#i-download"/></svg>JSON data</button></div><p id="pdf-note" class="field-hint" hidden>PDF export is unavailable. Markdown and JSON include your full report.</p><div class="prior-summary"><h3>Evidence-derived prior</h3><dl id="prior-details"></dl></div><p class="field-hint report-stamp" id="report-stamp"></p></aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="integrations-view" data-view="integrations" aria-labelledby="integrations-heading" hidden>
+      <div class="page-heading"><h1 id="integrations-heading">Connected evidence.</h1><p class="lede">A view of your available sources.<br>Choose which to include when you set up your study.</p></div>
+      <div class="integration-intro"><span class="status-dot"></span><div><strong>The seeded demo is always available.</strong><p>Explore the complete workflow offline, with illustrative T2D / HbA1c evidence.</p></div><a href="#design" class="text-button">Back to design <span aria-hidden="true">↗</span></a></div>
+      <div class="integration-grid" id="integration-list"></div>
+      <details class="connection-help"><summary>Configure a connection</summary><p>Set your live-source preferences and optional API keys in the project’s <code>.env</code> file, then restart the local server. Public sources use <code>OPENTRIAL_USE_LIVE_APIS=true</code>. Keys stay in the Python engine.</p><p>Availability indicates configuration, not a live connection test. Each report shows the outcome of its actual source requests.</p></details>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-inner"><span><strong>OpenTrial</strong><span class="footer-divider">/</span>Evidence. Assumptions. Perspective.</span><span>Research preview · For design exploration</span></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="reset-dialog"><form method="dialog"><h2>Start a new design?</h2><p>This resets the form to the demo defaults and clears the current report. Download anything you want to keep first.</p><div class="dialog-actions"><button class="button secondary" value="cancel" autofocus>Keep working</button><button class="button primary" value="reset">Start new design</button></div></form></dialog>
+</body>
+</html>

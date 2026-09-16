@@ -18,7 +18,7 @@ check. It began as a single-path proof of concept and now covers continuous and 
 endpoints, prior sensitivity, a Bayesian decision criterion, and group-sequential designs. It
 remains a learning-oriented engine, not a validated clinical tool.
 
-![OpenTrial's view: a trial-design form with the core and extended evidence sources](docs/images/app_screenshot.png)
+![OpenTrial's design workspace with study inputs and a live summary](docs/images/workspace.png)
 
 *The core demonstrated path: a continuous two-arm design and the operating-characteristics
 route, input to cited prior to power/Type-I to downloadable report. The sections below cover
@@ -77,19 +77,45 @@ python3 -m venv .venv
 source .venv/bin/activate              # Windows: .venv\Scripts\activate
 python3 -m pip install -e ".[dev]"     # install OpenTrial + test tools
 python3 -m pytest                       # offline suite, no network/keys needed
-streamlit run app.py                    # opens in your browser
+python serve.py                         # custom workspace at http://localhost:8765
 ```
 With no configuration it runs **fully offline** on the seeded T2D / HbA1c demo; the complete
 core path works on day one. To pull live evidence, copy `.env.example` to `.env`, set
 `OPENTRIAL_USE_LIVE_APIS=true`, and add any optional keys (see **Configuration**).
 
+## Design workspace
+
+Open **http://localhost:8765** after starting `python serve.py`. The custom HTML/CSS/JavaScript
+interface uses the same Python statistical engine as the original app. It has a responsive
+two-column layout, system typography, and System / Light / Dark appearance settings.
+No Node installation, build step, CDN, or additional Python dependencies are needed.
+
+- **Design:** study inputs, a live summary, evidence selection, and expandable advanced settings.
+- **Results:** enrollment recommendation, an interactive power/assurance chart, decision criteria,
+  evidence provenance, the full report, and Markdown / JSON / optional PDF downloads.
+- **Integrations:** configured source availability. Actual retrieval outcomes appear in each report.
+
+Continuous and binary endpoints, dropout, Monte Carlo, REML, PyMC, prior sensitivity, sequential
+designs, Gemini narratives, and study audits remain available. Existing engine settings and keys
+are read from `.env`; keys are never sent to the browser. Only the selected sources are queried.
+The initial selection is the offline seeded demo. Sources with missing configuration are disabled.
+
+Results stay in the current tab until reload or a new design. Editing inputs keeps the previous
+report with a visible notice until you generate again. Download results you want to retain.
+The appearance preference is the only data stored in browser local storage.
+
+Use `python serve.py --port 8766` for a different port. The server binds to loopback only and is
+intended for local use. The installed command `opentrial-web` also starts the workspace after
+reinstalling the package. The original Streamlit interface is still available with
+`streamlit run app.py`.
+
 ## How to use it
 1. Fill in the trial-design form (indication, endpoint, target effect, endpoint SD, alpha,
    desired power, max N per arm).
-2. Leave **Evidence sources** on the seeded demo (default) or tick live sources.
+2. Leave **Evidence sources** on the seeded demo (default) or select configured live sources.
 3. Click **Generate design report**.
-4. Read the prior summary, the operating-characteristic curves, and the provenance table;
-   download the report as Markdown or JSON.
+4. Review **Results** for the prior, operating-characteristic curves, and provenance;
+   download the report as Markdown, JSON, or PDF (with the `[pdf]` extra).
 
 ## Operating characteristics & provenance (the part to scrutinize)
 This is the heart of the PoC and the thing reviewers should look at first. Every formula
@@ -137,7 +163,8 @@ Live sources are off by default; the seeded demo needs none of them.
 
 ## Tech Stack
 Python 3.11+: **standard library for the default math** (`statistics`, `math`, `urllib`,
-`xml`, `re`), **Pydantic** for validated domain models, **Streamlit** for the UI. The
+`xml`, `re`), **Pydantic** for validated domain models, and a **vanilla JavaScript** workspace
+served by a local Python HTTP adapter. The original **Streamlit** UI also remains available. The
 statistics are deterministic by default; Gemini, when used, is called over its REST API for
 narrative only and never changes the numbers.
 

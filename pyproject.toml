@@ -9,6 +9,12 @@ dependencies = [
   "streamlit>=1.36",
 ]
 
+[project.scripts]
+opentrial-web = "opentrial.web:main"
+
+[tool.setuptools.package-data]
+opentrial = ["static/*"]
+
 [project.optional-dependencies]
 dev = [
   "pytest>=8.0",
